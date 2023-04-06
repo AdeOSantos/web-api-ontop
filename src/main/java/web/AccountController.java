@@ -1,5 +1,6 @@
-package com.ontop.webapi.webapiontop;
+package web;
 
+import model.Account;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,11 +10,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
-public class OntopController {
+public class AccountController {
 
     private Map<String, Account> db = new HashMap<>(){{
         put("1", new Account(1000, "Adalberto", "Santos", 255745279, 425306020,
@@ -24,7 +24,7 @@ public class OntopController {
         private List<Account> db = List.of(new Account("Adalberto", "Santos", 255745279, 425306020,
                 42049631, "Bank of America" ));
     */
-    public OntopController() {
+    public AccountController() {
         this.db = db;
     }
 

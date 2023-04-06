@@ -1,4 +1,4 @@
-package com.ontop.webapi.webapiontop;
+package model;
 
 public class Account {
 
