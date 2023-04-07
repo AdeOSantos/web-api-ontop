@@ -1,7 +1,12 @@
-package model;
+package com.ontop.webapi.webapiontop.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
+
+@Table
 public class Transaction {
 
+    @Id
     private int wallet_transaction_id;
 
     private int amount;

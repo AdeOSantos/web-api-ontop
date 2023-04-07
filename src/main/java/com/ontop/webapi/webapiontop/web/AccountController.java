@@ -1,6 +1,6 @@
-package web;
+package com.ontop.webapi.webapiontop.web;
 
-import model.Account;
+import com.ontop.webapi.webapiontop.model.Account;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

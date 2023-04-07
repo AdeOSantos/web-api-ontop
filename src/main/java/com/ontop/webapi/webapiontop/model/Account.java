@@ -1,7 +1,13 @@
-package model;
+package com.ontop.webapi.webapiontop.model;
 
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
+
+@Table("Account")
 public class Account {
 
+    @Id
     private int user_id;
 
     private String name;
@@ -20,7 +26,7 @@ public class Account {
     }
 
     public Account(int user_id,String name, String surname, int routingNumber, int id,
-                           int accountNumber, String bankName) {
+                   int accountNumber, String bankName) {
 
         this.user_id = user_id;
         this.name = name;
