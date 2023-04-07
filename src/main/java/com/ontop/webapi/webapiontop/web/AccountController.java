@@ -1,6 +1,7 @@
 package com.ontop.webapi.webapiontop.web;
 
 import com.ontop.webapi.webapiontop.model.Account;
+import com.ontop.webapi.webapiontop.service.AccountService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,18 @@ import java.util.Map;
 
 @RestController
 public class AccountController {
+
+
+    private final AccountService accountService;
+
+    public AccountController (AccountService accountService) {
+
+
+        this.accountService = accountService;
+    }
+
+
+
 
     private Map<String, Account> db = new HashMap<>(){{
         put("1", new Account(1000, "Adalberto", "Santos", 255745279, 425306020,
