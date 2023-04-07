@@ -4,6 +4,6 @@ import com.ontop.webapi.webapiontop.model.Account;
 import org.springframework.data.repository.CrudRepository;
 
 
-public interface TransactionRepository extends CrudRepository<Integer, Account> {
+public interface TransactionRepository extends CrudRepository< Account, Integer> {
 
 }
