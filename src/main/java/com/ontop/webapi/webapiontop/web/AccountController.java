@@ -3,11 +3,11 @@ package com.ontop.webapi.webapiontop.web;
 import com.ontop.webapi.webapiontop.model.Account;
 import com.ontop.webapi.webapiontop.service.AccountService;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,48 +21,33 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-
-
-    private Map<String, Account> db = new HashMap<>(){{
-        put("1", new Account(1000, "Adalberto", "Santos", 255745279, 425306020,
-                42049631, "Bank of America" ));
-    }};
-
-    /*
-        private List<Account> db = List.of(new Account("Adalberto", "Santos", 255745279, 425306020,
-                42049631, "Bank of America" ));
-    */
-    public AccountController() {
-        this.db = db;
-    }
-
     @GetMapping("/")
     public String hello(){
         return "Olá";
     }
-    /*
+
     @GetMapping("/accounts")
-    public List<Account> get() {
-        return db.values();
+    public Iterable<Account> get() {
+        return accountService.get();
     }
-*/
-    @GetMapping("/accounts")
-    public Collection<Account> get() {
-        return db.values();
-    }
+
     @GetMapping("/account/{id}")
-    public Account get(@PathVariable String id) {
-        Account account = db.get(id);
+    public Account get(@PathVariable Integer id) {
+        Account account = accountService.get(id);
         if ( account == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         return account;
     }
 
-
     @DeleteMapping("/account/{id}")
-    public void delete(@PathVariable String id) {
-        Account account = db.remove(id);
-        if ( account == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    public void delete(@PathVariable Integer id) {
+        accountService.remove(id);
+    }
 
+    @PostMapping("/account")
+        //public Account create(@RequestPart("data")MultipartFile file) throws IOException {
+        public Account create(Account account) throws IOException {
+            return accountService.save(account.getName(), account.getSurname(), account.getRoutingNumber()
+                    , account.getNationalId(), account.getAccountNumber(), account.getBankName());
     }
 
 
