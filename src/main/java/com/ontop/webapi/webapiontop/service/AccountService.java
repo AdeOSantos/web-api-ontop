@@ -15,7 +15,6 @@ public class AccountService {
         this.accountRepository = accountRepository;
     }
 
-
     public Iterable<Account> get() {
         return accountRepository.findAll();
     }
@@ -42,11 +41,7 @@ public class AccountService {
 
         accountRepository.save(account);
 
-
-
         return account;
     }
-
-
 
 }
