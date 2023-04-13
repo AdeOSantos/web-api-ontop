@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
+import java.util.NoSuchElementException;
 
 
 @RestController
@@ -42,7 +43,7 @@ public class TransactionController {
     }
 
     @PostMapping("/transaction")
-    public Transaction create (Transaction transaction) throws IOException {
+    public Transaction create (Transaction transaction)  {
 
         return transactionService.save(transaction.getAmount(), transaction.getUser_id());
 
