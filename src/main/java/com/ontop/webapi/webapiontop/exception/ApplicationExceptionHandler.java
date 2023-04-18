@@ -19,10 +19,10 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
 @ExceptionHandler(Exception.class)
     public final ResponseEntity<ExceptionResponse> handleAllExceptions (Exception ex, WebRequest request) {
 
-
         ExceptionResponse exceptionResponse = new ExceptionResponse(
                 new Date(),
-                ex.getMessage();
+                ex.hashCode(),
+                ex.getMessage(),
                 request.getDescription(false));
 
 
